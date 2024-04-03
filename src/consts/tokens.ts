@@ -5,6 +5,60 @@ import { Chains, TokenConnectionType, TokenStandard, WarpCoreConfig } from '@hyp
 // The input here is typically the output of the Hyperlane CLI warp deploy command
 export const tokenConfigs: WarpCoreConfig = {
   tokens: [
+    //#region OSMOSIS
+    // OSMO Osmosis to Manta
+    {
+      chainName: 'osmosis1',
+      standard: TokenStandard.CwHypCollateral,
+      decimals: 6,
+      symbol: 'OSMO',
+      name: 'Osmosis',
+      addressOrDenom: 'osmo1stqzny06rfukay2tdjzr8vnxyzdmhdsldt05twmhmfyyc7dd3cpqlsynru',
+      collateralAddressOrDenom: 'uosmo',
+      connections: [{ token: 'ethereum|mantapacific|0xd6A64BBFf7a92740b1cb78Afb2FC7337Fd0C8BDD' }],
+    },
+    // TIA Osmosis to Manta
+    {
+      chainName: 'osmosis1',
+      standard: TokenStandard.CwHypCollateral,
+      decimals: 6,
+      symbol: 'TIA',
+      name: 'Celestia',
+      addressOrDenom: 'osmo1h4y9xjcvs8lrx4z8ha48uq9a338w74dpl2ly3tf74fzvugp2kj4q9l0jkw',
+      collateralAddressOrDenom:
+        'ibc/D79E7D83AB399BFFF93433E54FAA480C191248FC556924A2A8351AE2638B3877',
+      connections: [{ token: 'ethereum|mantapacific|0x88410F3D8135b4D23b98dC37C4652C6969a5B1a8' }],
+    },
+
+    // OSMO on Manta from Osmosis
+    {
+      chainName: 'mantapacific',
+      standard: TokenStandard.EvmHypSynthetic,
+      decimals: 6,
+      symbol: 'OSMO',
+      name: 'Hyperlane Bridged OSMO',
+      addressOrDenom: '0xd6A64BBFf7a92740b1cb78Afb2FC7337Fd0C8BDD',
+      connections: [
+        {
+          token: 'cosmos|osmosis1|osmo1stqzny06rfukay2tdjzr8vnxyzdmhdsldt05twmhmfyyc7dd3cpqlsynru',
+        },
+      ],
+    },
+    // TIA on Manta from Osmosis
+    {
+      chainName: 'mantapacific',
+      standard: TokenStandard.EvmHypSynthetic,
+      decimals: 6,
+      symbol: 'TIA',
+      name: 'Hyperlane Bridged TIA',
+      addressOrDenom: '0x88410F3D8135b4D23b98dC37C4652C6969a5B1a8',
+      connections: [
+        {
+          token: 'cosmos|osmosis1|osmo1h4y9xjcvs8lrx4z8ha48uq9a338w74dpl2ly3tf74fzvugp2kj4q9l0jkw',
+        },
+      ],
+    },
+
     //#region NEUTRON
 
     // TIA Celestia to Neutron

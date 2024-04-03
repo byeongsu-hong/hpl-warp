@@ -6,29 +6,37 @@ import { ProtocolType } from '@hyperlane-xyz/utils';
 // Chains already in the SDK need not be included here unless you want to override some fields
 // Schema here: https://github.com/hyperlane-xyz/hyperlane-monorepo/blob/main/typescript/sdk/src/metadata/chainMetadataTypes.ts
 export const chains: ChainMap<ChainMetadata & { mailbox?: Address }> = {
-  // mycustomchain: {
-  //   protocol: ProtocolType.Ethereum,
-  //   chainId: 123123,
-  //   domainId: 123123,
-  //   name: 'mycustomchain',
-  //   displayName: 'My Chain',
-  //   nativeToken: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-  //   rpcUrls: [{ http: 'https://mycustomchain-rpc.com' }],
-  //   blockExplorers: [
-  //     {
-  //       name: 'MyCustomScan',
-  //       url: 'https://mycustomchain-scan.com',
-  //       apiUrl: 'https://api.mycustomchain-scan.com/api',
-  //       family: ExplorerFamily.Etherscan,
-  //     },
-  //   ],
-  //   blocks: {
-  //     confirmations: 1,
-  //     reorgPeriod: 1,
-  //     estimateBlockTime: 10,
-  //   },
-  //   logoURI: '/logo.svg',
-  // },
+  osmosis1: {
+    protocol: ProtocolType.Cosmos,
+    name: 'osmosis1',
+    chainId: 'osmosis-1',
+    domainId: 875,
+    displayName: 'Osmosis Mainnet',
+    displayNameShort: 'Osmosis',
+    slip44: 118,
+    bech32Prefix: 'osmo',
+    rpcUrls: [{ http: 'https://rpc.osmosis.zone:443' }],
+    restUrls: [{ http: 'https://rest.osmosis.zone:443' }],
+    grpcUrls: [{ http: 'https://grpc.osmosis.zone:443' }],
+    nativeToken: {
+      name: 'Osmosis',
+      denom: 'uosmo',
+      symbol: 'OSMO',
+      decimals: 6,
+    },
+    blockExplorers: [
+      {
+        name: 'Mintscan',
+        url: 'https://www.mintscan.io/osmosis',
+        // TODO API not supported, using url to meet validation requirements
+        apiUrl: 'https://www.mintscan.io/celestia',
+        family: ExplorerFamily.Other,
+      },
+    ],
+    transactionOverrides: {
+      gasPrice: 0.1,
+    },
+  },
 
   celestia: {
     protocol: ProtocolType.Cosmos,
