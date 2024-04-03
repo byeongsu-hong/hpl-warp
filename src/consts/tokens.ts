@@ -375,6 +375,12 @@ export const tokenConfigs: WarpCoreConfig = {
   options: {
     interchainFeeConstants: [
       {
+        origin: 'osmosis1',
+        destination: Chains.mantapacific,
+        amount: 840000,
+        addressOrDenom: 'uosmo',
+      },
+      {
         origin: Chains.neutron,
         destination: Chains.arbitrum,
         amount: 270000,
