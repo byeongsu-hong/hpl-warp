@@ -85,6 +85,7 @@ export const tokenConfigs: WarpCoreConfig = {
       ],
     },
 
+    //#endregion OSMOSIS
     //#region NEUTRON
 
     // TIA Celestia to Neutron
